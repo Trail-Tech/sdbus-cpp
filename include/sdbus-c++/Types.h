@@ -33,6 +33,7 @@
 #include <typeinfo>
 #include <memory>
 #include <tuple>
+#include <any>
 
 namespace sdbus {
 
@@ -144,6 +145,19 @@ namespace sdbus {
             : std::string(std::move(path))
         {}
         using std::string::operator=;
+    };
+
+    class UnixFD
+    {
+    private:
+        int32_t fd;
+
+    public:
+        UnixFD(): fd(-1) {}
+        UnixFD(int32_t newfd): fd(newfd) {}
+        UnixFD(const UnixFD &o): fd(o.fd) {}
+        void set(int32_t newfd) { fd = newfd; }
+        const int32_t get() const noexcept { return fd; }
     };
 
     class Signature : public std::string
