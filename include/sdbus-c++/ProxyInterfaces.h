@@ -164,6 +164,8 @@ namespace sdbus {
             getProxy().unregister();
         }
 
+        virtual ~ProxyInterfaces() { }
+
     protected:
         using base_type = ProxyInterfaces;
     };

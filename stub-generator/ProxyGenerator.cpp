@@ -95,6 +95,7 @@ std::string ProxyGenerator::processInterface(Node& interface) const
     body << tab << "{" << endl
             << registration
             << tab << "}" << endl << endl;
+    body << tab << "virtual ~" << className << "() {}" << endl << endl;
     if (!declaration.empty())
         body << declaration << endl;
 
